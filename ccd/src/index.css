@@ -1,9 +1,10 @@
 :root {
 
-  --font-principal: 'Poppins', sans-serif;
-  --font-header: 'Inter', sans-serif;
+  --font-titulo: 'Poppins', sans-serif;
+  --font-normal: 'Inter', sans-serif;
   --text: 1.1rem;
   --cor-principal: #0093FF;
+  --cor-footer:#111519;
 
 
   font-family: 'Poppins', sans-serif;
