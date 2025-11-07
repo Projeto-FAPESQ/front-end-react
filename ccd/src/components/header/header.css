@@ -18,16 +18,14 @@ header {
   display: flex;
   gap: 50px;
   padding-right: 30px;
-  padding-bottom: 4px;
   transition: color 0.3s ease;
 }
 
 .nav-header a {
-    position: relative;
+  position: relative;
   text-decoration: none;
   color: black;
   font-weight: 500;
-
   border-bottom: 2px solid transparent;
   transition: all 0.4s ease;
 }
@@ -37,24 +35,22 @@ header {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 0%; /* começa escondida */
+  width: 0%; 
   height: 2px;
   background-color: var(--cor-principal);
   transition: width 0.3s ease;
 }
 
 
-/* Quando o link é ativo */
 .nav-header ::after {
-  width: 100%; /* linha se expande */
+  width: 100%; 
 }
 
-/* Efeito no hover também */
+
 .nav-header a:hover::after {
   width: 100%;
 }
 
-/* Cor do texto no hover/ativo */
 .nav-header a:hover {
   color: var(--cor-principal);
 }

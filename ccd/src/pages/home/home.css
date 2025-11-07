@@ -1,0 +1,109 @@
+#first-hero {
+  background-image: url("../../assets/cajazeiras.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-family: var(--font-titulo);
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-family: var(--font-normal);
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  color: #e0e0e0;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.city-label {
+  position: absolute;
+  bottom: 1.2rem;
+  left: 1.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  z-index: 2;
+}
+
+.hero-about-container {
+  padding: 80px 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.hero-about-section {
+  flex: 1;
+  color: #000;
+  text-align: left;
+}
+
+.hero-about-section h2 {
+  color: var(--cor-principal);
+  font-weight: 500;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.hero-about-section h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.hero-about-section p {
+  opacity: 0.8;
+  color: #303a42;
+  line-height: 1.6;
+}
+
+.hero-about-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-about-image img {
+  width: 90%;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}

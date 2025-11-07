@@ -11,9 +11,8 @@ export default function Header() {
           <a href="/css/">Sobre</a>
           <a href="/js/">Contate-nos</a>
         </nav>
-        <Button label="Métricas" onClick={() => { }} />
+        <Button transparent={false} label="Métricas" onClick={() => { }} />
       </div>
-
     </header>
   );
 };
