@@ -18,7 +18,7 @@ export default function Header() {
           <a onClick={() => navegar("/about")}>Sobre</a>
           <a onClick={() => navegar("/contact")}>Contate-nos</a>
         </nav>
-        <Button transparent={false} label="Métricas" onClick={() => { }} />
+        <Button onClick={() => navegar("/metrics")} transparent={false} label="Métricas" />
       </div>
     </header>
   );

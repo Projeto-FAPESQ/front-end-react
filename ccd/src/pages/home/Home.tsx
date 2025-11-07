@@ -7,8 +7,17 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import Button from "../../components/input/button/Button";
 import Card from "../../components/card/Card";
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Home() {
+  const navigate = useNavigate();
+
+  function navegar(page: string) {
+    navigate(`${page}`);
+  }
+
+
   return (
     <div>
       <Header />
@@ -24,8 +33,8 @@ export default function Home() {
           </p>
 
           <div className="hero-buttons">
-            <Button transparent={false} label="Realizar Métricas" />
-            <Button transparent={true} label="Sobre Nós" />
+            <Button onClick={() => navegar("/metrics")} transparent={false} label="Realizar Métricas" />
+            <Button onClick={() => navegar("/about")} transparent={true} label="Sobre Nós" />
           </div>
         </div>
 
@@ -64,29 +73,29 @@ export default function Home() {
         </div>
 
         <div className="municipios-grid">
-          <Card 
+          <Card
             title="Cajazeiras"
           />
 
-          <Card 
+          <Card
             title="Patos"
           />
 
-          <Card 
+          <Card
             title="Sousa"
           />
 
-          <Card 
+          <Card
             title="Pombal"
           />
 
-          <Card 
+          <Card
             title="Monte Horebe"
           />
 
         </div>
 
-        <Button transparent={false} label="Visualizar métricas" />
+        <Button onClick={() => navegar("/metrics")} transparent={false} label="Visualizar métricas" />
       </section>
 
       <section id="how-was-made" className="hero">
