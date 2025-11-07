@@ -2,7 +2,7 @@ import './button.css';
 
 type ButtonProps = {
   label: string;
-  transparent: boolean;
+  transparent?: boolean;
   onClick?: () => void;
 }
 

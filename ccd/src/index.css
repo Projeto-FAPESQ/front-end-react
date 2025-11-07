@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
 :root {
 
   --font-titulo: 'Poppins', sans-serif;
   --font-normal: 'Inter', sans-serif;
+  --title:2.8rem;
+  --subtitle:1.8rem;
   --text: 1.1rem;
   --cor-principal: #0093FF;
   --cor-footer:#111519;

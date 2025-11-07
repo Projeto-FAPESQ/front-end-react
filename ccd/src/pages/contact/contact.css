@@ -1,0 +1,32 @@
+.contact-main {
+  position: relative;
+  height: 100vh;
+  background-color: white;
+  max-height: 1080px;
+  color: var(--cor-title);
+  display: flex;
+  flex-direction: column;
+  padding: 40px 100px;
+  justify-content: left;
+  font-family: var(--font-titulo);
+  text-align: left;
+}
+
+.contact-main h1 {
+    font-size: var(--subtitle);
+}
+
+.double-names {
+  display: flex;
+  gap: 50px; 
+}
+
+.double-names > * {
+  flex: 1; 
+}
+
+.submit-div {
+    padding-top: 10px;
+    display: flex;
+    justify-content: end;
+}
