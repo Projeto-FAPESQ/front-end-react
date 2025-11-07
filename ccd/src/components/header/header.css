@@ -1,0 +1,32 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  color: black;
+  padding: 0px 80px;
+  font-family: var(--font-header);
+}
+
+.container-info-header {
+  display: flex;
+  align-items: center;
+  gap: 20px; 
+}
+
+.nav-header {
+  display: flex;
+  gap: 50px;
+  padding-right: 30px;
+}
+
+.nav-header a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.nav-header a:hover {
+  opacity: 0.8;
+}

@@ -4,8 +4,8 @@ import Footer from "../../components/footer/Footer";
 
 const Home: React.FC = () => {
   return (
-    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      <Header title="Meu Sistema" />
+    <div style={{ display: "flex", flexDirection: "column", minWidth: "100%", minHeight: "100vh" }}>
+      <Header/>
       <main style={{ padding: "2rem", flex: 1 }}>
         <h2>Bem-vindo à página inicial!</h2>
         <p>Essa é a página principal do sistema.</p>

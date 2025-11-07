@@ -1,15 +1,19 @@
-import React from "react";
+import './header.css';
+import Button from "../input/button/Button";
 
-type Props = {
-  title: string;
-};
-
-const Header: React.FC<Props> = ({ title }) => {
+export default function Header() {
   return (
-    <header style={{ backgroundColor: "#ddd", width: 1480 }}>
-      <h1>{title}</h1>
+    <header>
+      <h1>CCS</h1>
+      <div className='container-info-header'>
+        <nav className='nav-header'>
+          <a href="/html/">Home</a>
+          <a href="/css/">Sobre</a>
+          <a href="/js/">Contate-nos</a>
+        </nav>
+        <Button label="Métricas" onClick={() => { }} />
+      </div>
+
     </header>
   );
 };
-
-export default Header;
