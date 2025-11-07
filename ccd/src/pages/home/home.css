@@ -1,5 +1,5 @@
 #first-hero {
-  background-image: url("../../assets/cajazeiras.png");
+  background-image: url("../../assets/cajazeiras.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -7,6 +7,7 @@
 .hero {
   position: relative;
   height: 100vh;
+  max-height: 1080px;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -62,6 +63,7 @@
 }
 
 .hero-about-container {
+  max-width: 1200px;
   padding: 80px 120px;
   display: flex;
   align-items: center;
@@ -85,7 +87,7 @@
 .hero-about-section h1 {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--cor-title);
   margin-bottom: 20px;
 }
 
@@ -104,6 +106,60 @@
 .hero-about-image img {
   width: 90%;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
   object-fit: cover;
 }
+
+.hero-imgs-group {
+   display: flex;
+   gap: 50px;
+}
+
+.hero-imgs-group img{
+    max-width: 250px;
+    height: 80px;
+}
+
+.hero-sponsors-content{
+  display: flex;
+  flex-direction: column;
+  gap: 200px;
+}
+
+#sponsors h1{
+  color: var(--cor-title);
+}
+
+.municipios {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(180deg, #fff 0%, #f9fcff 100%);
+}
+
+.municipios-header {
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.municipios-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.municipios-header p {
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.municipios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto 60px;
+}
+
+
+
