@@ -1,8 +1,6 @@
 .contact-main {
   position: relative;
-  height: 100vh;
   background-color: white;
-  max-height: 1080px;
   color: var(--cor-title);
   display: flex;
   flex-direction: column;
@@ -10,6 +8,8 @@
   justify-content: left;
   font-family: var(--font-titulo);
   text-align: left;
+  height: auto; 
+  min-height: 100vh; 
 }
 
 .contact-main h1 {

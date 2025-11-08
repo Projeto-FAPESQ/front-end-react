@@ -1,16 +1,79 @@
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
+import logoLoopis from "../../assets/loopis-img.jpg";
+import './about.css';
+import TeamCard from "../../components/team-card/TeamCard";
+import alec from "../../assets/img-team/alec.png";
+import eva from "../../assets/img-team/eva.png";
+import gustavo from "../../assets/img-team/gustavo.png";
+import lopes from "../../assets/img-team/lopes.jpg";
+import kahe from "../../assets/img-team/kahe.jpg";
+import islan from "../../assets/img-team/islan.png";
+
 
 
 export default function About() {
+
+  const equipe = [
+    {
+      nome: "Loopis Jr.",
+      imagem: logoLoopis,
+      descricao: "Empresa júnior designada para realizar o serviço.",
+      contato: "loopisjr@gmail.com",
+    },
+    {
+      nome: "Alec Van França",
+      imagem: alec,
+      descricao: "Idealizador da aplicação e orientador do projeto.",
+      contato: "alecvan.franca@ifpb.edu.br",
+    },
+    {
+      nome: "Eva Maria Campos",
+      imagem: eva,
+      descricao: "Coorientadora do projeto.",
+      contato: "eva@ifpb.edu.br",
+    },
+        {
+      nome: "Gustavo Lopes Lemos",
+      imagem: lopes,
+      descricao: "Bolsista e Desenvolvedor do back-end",
+      contato: "loopisjr@gmail.com",
+    },
+    {
+      nome: "Gustavo P. Marcena da Cruz",
+      imagem: gustavo,
+      descricao: "Bolsista e Desenvolvedor do front-end",
+      contato: "eva@ifpb.edu.br",
+    },
+    {
+      nome: "Islan Pereira de Oliveira",
+      imagem: islan,
+      descricao: "Bolsista e Desenvolvedor do back-end",
+      contato: "alecvan.franca@ifpb.edu.br",
+    },
+    {
+      nome: "Kahe Mikayas Estrela Maciel",
+      imagem: kahe,
+      descricao: "Bolsista e Desenvolvedor do back-end",
+      contato: "eva@ifpb.edu.br",
+    },
+  ];
+
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      <Header/>
-      <main style={{ padding: "2rem", flex: 1 }}>
-        <h2>Bem-vindo à página de sobre!</h2>
-        <p>Essa é a página de metricas</p>
-      </main>
+    <>
+      <Header />
+      <section className="sobre-nos">
+        <h2>Sobre nós</h2>
+        <p className="subtitulo">Conheça a nossa equipe</p>
+
+        <div className="cards-container">
+          {equipe.map((membro, index) => (
+          <TeamCard key={index} title={membro.nome} text={membro.descricao} img={membro.imagem} contact={membro.contato} />
+        ))}
+          
+        </div>
+      </section>
       <Footer />
-    </div>
+    </>
   );
 };
