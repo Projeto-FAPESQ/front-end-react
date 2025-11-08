@@ -30,3 +30,15 @@
     display: flex;
     justify-content: end;
 }
+
+@media (max-width: 768px) {
+  .double-names {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .contact-main {
+    padding: 40px 30px;
+  }
+
+}

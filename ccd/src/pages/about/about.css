@@ -32,3 +32,9 @@
   max-width: 1100px;
   margin: 0 auto 60px;
 }
+
+@media (max-width: 768px) {
+    .sobre-nos {
+         padding: 40px 30px;
+    }
+}

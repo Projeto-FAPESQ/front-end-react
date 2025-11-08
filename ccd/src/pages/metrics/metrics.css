@@ -1,0 +1,17 @@
+.metrics {
+  position: relative;
+  background-color: white;
+  color: var(--cor-title);
+  display: flex;
+  flex-direction: column;
+  padding: 40px 100px;
+  justify-content: left;
+  font-family: var(--font-titulo);
+  text-align: left;
+  height: auto; 
+  min-height: 100vh;
+}
+
+.contact-main h1 {
+    font-size: var(--subtitle);
+}

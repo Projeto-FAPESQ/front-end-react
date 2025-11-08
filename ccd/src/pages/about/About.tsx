@@ -10,8 +10,6 @@ import lopes from "../../assets/img-team/lopes.jpg";
 import kahe from "../../assets/img-team/kahe.jpg";
 import islan from "../../assets/img-team/islan.png";
 
-
-
 export default function About() {
 
   const equipe = [

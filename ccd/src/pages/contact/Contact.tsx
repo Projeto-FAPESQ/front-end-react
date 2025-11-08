@@ -23,10 +23,6 @@ export default function Contact() {
             <Button label="Enviar" onClick={() => { }} />
           </div>
         </div>
-
-
-
-
       </main>
       <Footer />
     </div>

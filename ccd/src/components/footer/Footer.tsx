@@ -1,7 +1,14 @@
 import './footer.css';
 import { Phone, Mail, MapPin } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 
 export default function Footer() {
+  const navigate = useNavigate();
+
+  function navegar(page:string) {
+    navigate(`${page}`);
+  }
+
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -26,9 +33,9 @@ export default function Footer() {
         <div className="footer-section">
           <h3>Links</h3>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Sobre Nós</a></li>
-            <li><a href="#">Métricas</a></li>
+            <li><a href='#' onClick={() => navegar("/")}>Home</a></li>
+            <li><a href='#' onClick={() => navegar("/about")}>Sobre Nós</a></li>
+            <li><a href='#' onClick={() => navegar("/contact")}>Métricas</a></li>
           </ul>
         </div>
 
