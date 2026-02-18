@@ -302,6 +302,153 @@ export const DADOS_ODS = [
       }
     ]
   },
+    {
+    id: "11.7.1",
+    titulo: "Área verde pública por habitante (m²/hab.).",
+    tipo: "numerico",
+    eixoLabel: "m²/hab.",
+    descricao: "Proporcionar o acesso universal a espaços públicos seguros, inclusivos, acessíveis e verdes, em particular para as mulheres e crianças, pessoas idosas e pessoas com deficiência. ",    
+    historico: [
+       {
+        municipio: "Patos",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 2.45 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 0 }, { ano: 2023, valor: 0}
+        ]
+      },
+      {
+        municipio: "Cajazeiras",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0.72 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 0 }, { ano: 2023, valor: 0}
+        ]
+      },
+      {
+        municipio: "Pombal",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 0 }, { ano: 2023, valor: 1.80 }
+        ]
+      },
+      {
+        municipio: "Monte Horebe",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 0 }, { ano: 2023, valor: 0}
+        ]
+      },
+      {
+        municipio: "Sousa",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 1.10 },
+          { ano: 2022, valor: 0 }, { ano: 2023, valor: 0 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "11.7.2",
+    titulo: " Despesa liquidada per capita com infraestrutura urbana e paisagismo.",
+    tipo: "numerico",
+    eixoLabel: "R$/hab.",
+    descricao: "Proporcionar o acesso universal a espaços públicos seguros, inclusivos, acessíveis e verdes, em particular para as mulheres e crianças, pessoas idosas e pessoas com deficiência. ",    
+    historico: [
+       {
+        municipio: "Patos",
+        dados: [
+          { ano: 2016, valor: 160 }, { ano: 2017, valor: 155 }, { ano: 2018, valor: 165 },
+          { ano: 2019, valor: 180 }, { ano: 2020, valor: 120 }, { ano: 2021, valor: 190 },
+          { ano: 2022, valor: 240 }, { ano: 2023, valor: 271.41}
+        ]
+      },
+      {
+        municipio: "Cajazeiras",
+        dados: [
+          { ano: 2016, valor: 145 }, { ano: 2017, valor: 138 }, { ano: 2018, valor: 150 },
+          { ano: 2019, valor: 155 }, { ano: 2020, valor: 110 }, { ano: 2021, valor: 175 },
+          { ano: 2022, valor: 190 }, { ano: 2023, valor: 202.40}
+        ]
+      },
+      {
+        municipio: "Pombal",
+        dados: [
+          { ano: 2016, valor: 110 }, { ano: 2017, valor: 105 }, { ano: 2018, valor: 120 },
+          { ano: 2019, valor: 135 }, { ano: 2020, valor: 90 }, { ano: 2021, valor: 150 },
+          { ano: 2022, valor: 280 }, { ano: 2023, valor: 354.14 }
+        ]
+      },
+      {
+        municipio: "Monte Horebe",
+        dados: [
+          { ano: 2016, valor: 220 }, { ano: 2017, valor: 210 }, { ano: 2018, valor: 230 },
+          { ano: 2019, valor: 250 }, { ano: 2020, valor: 180 }, { ano: 2021, valor: 300 },
+          { ano: 2022, valor: 650 }, { ano: 2023, valor: 714.61}
+        ]
+      },
+      {
+        municipio: "Sousa",
+        dados: [
+          { ano: 2016, valor: 130 }, { ano: 2017, valor: 125 }, { ano: 2018, valor: 140 },
+          { ano: 2019, valor: 155 }, { ano: 2020, valor: 95 }, { ano: 2021, valor: 160 },
+          { ano: 2022, valor: 185 }, { ano: 2023, valor: 215.58 }
+        ]
+      }
+    ]
+  },
+    {
+    id: "11.a",
+    titulo: "Integração Regional",
+    tipo: "binario",
+    eixoLabel: "Participação em consórcio",
+    descricao: "Apoiar relações econômicas, sociais e ambientais positivas entre áreas urbanas, periurbanas e rurais, reforçando o planejamento nacional e regional de desenvolvimento.  ",
+    historico:[
+{
+        municipio: "Patos",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0},
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 0 }, { ano: 2023, valor: 1 }
+        ]
+      },
+      {
+        municipio: "Cajazeiras",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 0 }, { ano: 2023, valor: 0 }
+        ]
+      },
+      {
+        municipio: "Pombal",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 0 }, { ano: 2023, valor: 0 }
+        ]
+      },
+      {
+        municipio: "Monte Horebe",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 0 }, { ano: 2023, valor: 1 }
+        ]
+      },
+      {
+        municipio: "Sousa",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 1 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 0 }, { ano: 2023, valor: 0 }
+        ]
+      }
+    ]
+  },
   {
     id: "11.b",
     titulo: "Resiliência Climática e Desastres",
@@ -351,19 +498,19 @@ export const DADOS_ODS = [
       }
     ]
   },
-  {
-    id: "11.a",
-    titulo: "Integração Regional",
-    tipo: "binario",
-    eixoLabel: "Participação em consórcio",
-    descricao: "Apoiar relações econômicas, sociais e ambientais positivas entre áreas urbanas, periurbanas e rurais, reforçando o planejamento nacional e regional de desenvolvimento.  ",
-    historico:[
-{
+    {
+    id: "11.c",
+    titulo: "Construção Sustentável",
+    tipo: "porcentagem",
+    eixoLabel: "%",
+    descricao: "Apoiar os países menos desenvolvidos, inclusive por meio de assistência técnica e financeira, para construções sustentáveis e robustas, utilizando materiais locais. ",    
+    historico: [
+       {
         municipio: "Patos",
         dados: [
-          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0},
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
           { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
-          { ano: 2022, valor: 0 }, { ano: 2023, valor: 1 }
+          { ano: 2022, valor: 0 }, { ano: 2023, valor: 0}
         ]
       },
       {
@@ -371,7 +518,7 @@ export const DADOS_ODS = [
         dados: [
           { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
           { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
-          { ano: 2022, valor: 0 }, { ano: 2023, valor: 0 }
+          { ano: 2022, valor: 0 }, { ano: 2023, valor: 0}
         ]
       },
       {
@@ -387,18 +534,18 @@ export const DADOS_ODS = [
         dados: [
           { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
           { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
-          { ano: 2022, valor: 0 }, { ano: 2023, valor: 1 }
+          { ano: 2022, valor: 0 }, { ano: 2023, valor: 0}
         ]
       },
       {
         municipio: "Sousa",
         dados: [
           { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
-          { ano: 2019, valor: 1 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0},
           { ano: 2022, valor: 0 }, { ano: 2023, valor: 0 }
         ]
       }
     ]
   }
-  
+
 ];
