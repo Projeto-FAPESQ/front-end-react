@@ -12,12 +12,18 @@
   min-height: 100vh;
 }
 
+#title-metrics {
+  padding-top: 20px;
+  border-bottom: 2px solid gray;
+}
+
 .contact-main h1 {
     font-size: var(--subtitle);
 }
 
 .selection-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -44,4 +50,15 @@ select {
 }
 .chart-container{
   width: 100%;
+}
+
+
+@media (max-width: 768px) {
+   .metrics-container {
+    display: flex;
+    flex-direction: column;
+   }
+   .metrics {
+    padding: 20px;
+   }
 }

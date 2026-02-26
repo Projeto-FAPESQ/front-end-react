@@ -2,6 +2,7 @@ import './header.css';
 import Button from "../input/button/Button";
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import logo from "../../assets/logo.png";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -14,7 +15,8 @@ export default function Header() {
 
   return (
     <header>
-      <h1>CCS</h1>
+      <img className='logo' src={logo} alt="logo do projeto" />
+     
       <div className={`container-info-header ${menuOpen ? "open" : ""}`}>
         <nav className="nav-header">
           <a onClick={() => navegar("/")}>Home</a>

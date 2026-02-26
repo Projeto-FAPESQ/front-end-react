@@ -5,10 +5,11 @@ type InputProps = {
     placeHolder?: string;
     type?: string;
     textArea?: boolean;
+    name?: string;
     onChange?: () => void;
 }
 
-export default function Input({ label, placeHolder, type, textArea, onChange }: InputProps) {
+export default function Input({ label, placeHolder, type, textArea,name, onChange }: InputProps) {
     return (
         <div className='form-input'>
             <p>{label}</p>
@@ -18,7 +19,7 @@ export default function Input({ label, placeHolder, type, textArea, onChange }: 
 
             ) :
                 (
-                    <input type={type} placeholder={placeHolder} onChange={onChange} />
+                    <input type={type} placeholder={placeHolder} name={name} onChange={onChange} />
                 )}
 
         </div>

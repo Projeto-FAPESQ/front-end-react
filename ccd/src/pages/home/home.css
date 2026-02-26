@@ -1,10 +1,34 @@
-#first-hero {
-  background-image: url("../../assets/cajazeiras.jpg");
-  background-size: cover;
-  background-position: center;
+#first-hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
+}
+
+#first-hero img.fade-out {
+  opacity: 0;
+}
+
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65); 
+  z-index: 1;
+  transition: background 1s ease-in-out;
+}
+
+.overlay.fade-out-overlay {
+  background: rgba(0, 0, 0, 0.85);
 }
 
 .hero {
+  z-index: 2;
   position: relative;
   height: 100vh;
   max-height: 1080px;
@@ -16,13 +40,6 @@
   color: white;
   font-family: 'Inter', sans-serif;
   overflow: hidden;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.65);
-  z-index: 1;
 }
 
 .hero-content {
