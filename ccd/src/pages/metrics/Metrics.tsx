@@ -1,273 +1,245 @@
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import "./metrics.css";
-import { useState, useEffect } from "react";
-import Button from "../../components/input/button/Button";
-import {   LineChart,
-  Line,BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid, ResponsiveContainer } from "recharts";
+import { useState } from "react";
+import {
+  LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid, ResponsiveContainer, ReferenceLine
+} from "recharts";
+import { DADOS_ODS } from "../../data/dadosODS";
+import { DADOS_QUANTITATIVOS_ODS } from "../../data/dadosQuantitativosODS";
 
 export default function Metrics() {
   const [ano, setAno] = useState(2023);
-  const [anoList,setAnoList] = useState([2023])  // fazendo uma lista de anos pra ficar de acordo com o retorno da api 
-  const [municipioList,setMunicipioList]= useState(["Pombal"]) // mesma coisa pra municipios 
-  const [dados, setDados] = useState<ExecucaoAgrupada[]>([]);
-  const [municipio,setMunicipio] = useState("Pombal");
+  const [municipio, setMunicipio] = useState("Patos");
+  const [indicadorId, setIndicadorId] = useState(DADOS_ODS[0].id);
+  const [indicadorQuantId, setIndicadorQuantId] = useState(DADOS_QUANTITATIVOS_ODS[0].id);
 
-  
-  const meses = ["Janeiro","Fevereiro","Março","Abril","Maio",  "Junho", "Julho", "Agosto",  "Setembro","Outubro","Novembro","Dezembro"];
-  const dadosPorMes = []  
+  const indicadorAtual = DADOS_ODS.find((d) => d.id === indicadorId) || DADOS_ODS[0];
+  const indicadorQuantAtual = DADOS_QUANTITATIVOS_ODS.find((d) => d.id === indicadorQuantId) || DADOS_QUANTITATIVOS_ODS[0];
 
-  const formatarValor = (value: number) => //pra deixar os valores bunitinhos no grafico 
-  new Intl.NumberFormat("pt-BR", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).format(value);
+  const isBinario = indicadorAtual.tipo === "binario";
+  const isQuantBinario = indicadorQuantAtual.tipo === "binario";
 
 
-  interface ItemOrcamentario {
-    valorFixado: number;
-    valorEmpenhado: number;
-    valorLiquidado: number;
-    valorPago: number;
-    ano: number;
-    municipio: string;
-    data: string;
-  }
+  const unidade = indicadorAtual.eixoLabel || "";
 
-  interface ExecucaoAgrupada {
-    ano: number;
-    valorFixado: number;
-    valorEmpenhado: number;
-    valorPormeses: Record <string, {fixado: number, empenhado: number}>
-  }
+  const listaMunicipios = indicadorAtual.historico.map((h) => h.municipio);
 
-  useEffect(() => {
-    async function carregar() {
-      const resL = await fetch("http://localhost:3000/licitacoes");
-      const resD = await fetch("http://localhost:3000/despesas");
-      
-      const licitacoes: ItemOrcamentario[] = await resL.json();
-      const despesas: ItemOrcamentario[] = await resD.json();
+  const listaAnos = indicadorAtual.historico[0].dados.map((d) => d.ano);
 
-      const combinado = [...licitacoes, ...despesas];
-      const agrupado: Record<number, ExecucaoAgrupada> = {};
-      const tempAnos = anoList
-      const tempMunicipios = municipioList
-      
-   
+  const formatarValor = (valor: number) => {
+    if (isBinario) return valor === 1 ? "Sim" : "Não";
+    return `${valor}`;
+  };
 
-      combinado.forEach((item) => {
-        
-        if (item.municipio !== municipio) return; 
-        if(!tempMunicipios.includes(item.municipio))
-          tempMunicipios.push(item.municipio)
-        const date = new Date(item.data)
-        const mes = date.getMonth()
+  const dadosComparativosAno = indicadorAtual.historico.map((item) => {
+    const dadoDoAno = item.dados.find((d) => d.ano === ano);
+    return {
+      municipio: item.municipio,
+      valor: dadoDoAno ? dadoDoAno.valor : 0,
+    };
+  });
 
+  const dadosHistoricosMunicipio = indicadorAtual.historico.find(
+    (h) => h.municipio === municipio
+  )?.dados || [];
 
-        if (!agrupado[item.ano]) {
-          
-          if(!tempAnos.includes(item.ano))
-            tempAnos.push(item.ano)
-
-          agrupado[item.ano] = {
-            ano: item.ano,
-            valorFixado: 0,
-            valorEmpenhado: 0,
-            valorPormeses: {}
-          };
-        }
-
-        agrupado[item.ano].valorFixado += item.valorFixado || 0;
-        agrupado[item.ano].valorEmpenhado += item.valorEmpenhado || 0;
-        if(!agrupado[item.ano].valorPormeses[meses[mes]]){
-            agrupado[item.ano].valorPormeses[meses[mes]] = {fixado: item.valorFixado, empenhado: item.valorEmpenhado}
-        }else{
-          agrupado[item.ano].valorPormeses[meses[mes]].fixado += item.valorFixado
-          agrupado[item.ano].valorPormeses[meses[mes]].empenhado += item.valorEmpenhado
-        }
-
-        
-      });
-      
-      
-
-      
-      setDados(Object.values(agrupado));
-      tempAnos.sort()
-      setAnoList(tempAnos)
-      setMunicipioList(tempMunicipios)
-    }
-
-    carregar();
-  }, [municipio]);
-
-  const dadosAno = dados.find((d) => d.ano === ano);
-  const dadosMes = dados.find((d) => d.ano === ano)?.valorPormeses
-  let listMes : {mes: string, empenhado: number, fixado: number}[] = [] 
-  if(dadosMes){
-     meses.forEach((mes)=>{
-        if(dadosMes[mes]){
-          listMes.push({mes: mes, empenhado: dadosMes[mes].empenhado, fixado: dadosMes[mes].fixado})
-        }
-     })
-  }
-
-
-
-  const fixado = dadosAno?.valorFixado || 0;
-  const empenhado = dadosAno?.valorEmpenhado || 0;
-
-  
-
-  const ieo = fixado > 0 ? (empenhado / fixado) * 100 : 0;
+  const valorAtual = dadosHistoricosMunicipio.find((d) => d.ano === ano)?.valor || 0;
 
   function gerarAnalise() {
-    if (!fixado && !empenhado)
-      return "Não há dados suficientes para análise neste ano.";
-
-    if (ieo < 10)
-      return `Execução crítica (${ieo.toFixed(1)}%). O município praticamente não utilizou o orçamento disponível.`;
-
-    if (ieo < 30)
-      return `Execução muito baixa (${ieo.toFixed(1)}%). O orçamento existe, mas está sendo pouco utilizado.`;
-
-    if (ieo < 60)
-      return `Execução moderada (${ieo.toFixed(1)}%). Há uso parcial do orçamento, mas poderia ser melhor.`;
-
-    return `Execução alta (${ieo.toFixed(1)}%). O município demonstra boa capacidade de utilizar o orçamento planejado.`;
+    if (isBinario) {
+      return valorAtual === 1
+        ? `Em ${ano}, ${municipio} cumpre a meta estabelecida.`
+        : `Em ${ano}, ${municipio} ainda não atendia aos requisitos da meta.`;
+    } else {
+      return `Em ${ano}, ${municipio} registrou ${valorAtual} ${unidade.toLowerCase() || 'ocorrências'} referentes a este indicador.`;
+    }
   }
 
-  const analise = gerarAnalise();
+  const dadosComparativosQuant = indicadorQuantAtual.historico.map((item) => ({
+    municipio: item.municipio,
+    valor: item.dados[0]?.valor || 0,
+  }));
 
-function arredondarProximoFechado(valor: number): number {
-  if (!isFinite(valor) || valor <= 0) return 0;
+  const formatarNivelImplementacao = (valor: number): string => {
+    switch (valor) {
+      case 0:
+        return "Não existente";
+      case 1:
+        return "Existente";
+      case 2:
+        return "Implementado";
+      default:
+        return String(valor);
+    }
+  };
 
-  // função ala chatgpt kkkk 
-  //foda pai 
-  const expoente = Math.floor(Math.log10(valor));
-  const step = Math.pow(10, Math.max(0, expoente - 1));
-  const arred = Math.ceil(valor / step) * step;
+  function gerarAnaliseQuant() {
+    const maior = Math.max(...dadosComparativosQuant.map((d) => d.valor));
+    const municipiosDestaque = dadosComparativosQuant
+      .filter((d) => d.valor === maior)
+      .map((d) => d.municipio)
+      .join(", ");
 
-  return arred;
-}
+    if (dadosComparativosQuant.filter(e => e.valor == 0).length == 5) {
+      return "Nenhum município alcançou um resultado satisfatório para a métrica em questão."
+    }
+    if (isQuantBinario) {
+      return `Os municípios com maior nível de atendimento ao indicador são: ${municipiosDestaque}.`;
+    }
+
+    return `O maior valor registrado foi ${maior}, observado em ${municipiosDestaque}.`;
+  }
 
   return (
     <div>
       <Header />
-
       <section className="metrics">
-        <h1>Métricas</h1>
-        <p>Análise do desenvolvimento sustentável dos municípios da Paraíba</p>
+        <h1 id="title-metrics">Métricas ODS</h1>
 
         <div className="selection-container">
+          <select value={indicadorId} onChange={(e) => setIndicadorId(e.target.value)}>
+            {DADOS_ODS.map((ods) => (
+              <option key={ods.id} value={ods.id}>{ods.id} - {ods.titulo}</option>
+            ))}
+          </select>
           <select value={ano} onChange={(e) => setAno(Number(e.target.value))}>
-            {anoList.map((item)=>(
-              <option value={item}>{item}</option>
-            ))}
-            
+            {listaAnos.map((item) => <option key={item} value={item}>{item}</option>)}
           </select>
-
-          <select value={municipio} onChange={(e)=> setMunicipio(e.target.value)}>
-            {municipioList.map((item)=>(
-              <option value={item}>{item}</option>
-            ))}
+          <select value={municipio} onChange={(e) => setMunicipio(e.target.value)}>
+            {listaMunicipios.map((item) => <option key={item} value={item}>{item}</option>)}
           </select>
-
-          <select>
-            <option>ODS 11</option>
-          </select>
-
-          <Button label="Gerar Relatório" />
         </div>
 
         <div className="metrics-container">
+
           <div className="chart-container">
-            <h2>Total</h2>
+            <h2>Panorama ({ano})</h2>
             <ResponsiveContainer height={300}>
-              <BarChart
-                data={[
-                  { indicador: "Fixado", valor: fixado },
-                  { indicador: "Empenhado", valor: empenhado },
-                ]}
-                layout="vertical"
-                margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
+              <BarChart data={dadosComparativosAno} layout="vertical" margin={{ left: 40, right: 30 }}>
+                <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+
                 <XAxis
-                    type="number"
-                    domain={[
-                      0,
-                      arredondarProximoFechado(Math.max(fixado, empenhado) * 1.2),
-                    ]}
-                    tickFormatter={formatarValor}
-                  />
+                  type="number"
+                  domain={isBinario ? [0, 1] : [0, 'auto']}
+                  hide={isBinario}
+                />
 
-                <YAxis type="category" dataKey="indicador" width={100} />
-                <Tooltip formatter={(value: number) => formatarValor(value)}/>
+                <YAxis type="category" dataKey="municipio" width={100} />
 
-                <Legend />
-                <Bar dataKey="valor" fill="#3b82f6" />
+                <Tooltip formatter={(value: number) => [formatarValor(value), unidade]} />
 
+                <Bar dataKey="valor" fill="#3b82f6" barSize={30} name={unidade || "Valor"} />
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <div className="chart-container">
-            <h2>Por Mês</h2>
-            <ResponsiveContainer height={300}>
-              <LineChart
-                data={listMes}
-                margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
 
-                <XAxis dataKey="mes" />
+          <div className="chart-container">
+            <h2 >Evolução: {municipio}</h2>
+            <ResponsiveContainer height={300}>
+              <LineChart data={dadosHistoricosMunicipio} margin={{ left: 20, right: 30 }}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="ano" />
 
                 <YAxis
-                  tickFormatter={(value) =>
-                    new Intl.NumberFormat("pt-BR").format(value)
-                  }
+                  domain={isBinario ? [0, 1] : ['auto', 'auto']}
+                  ticks={isBinario ? [0, 1] : undefined}
+                  tickFormatter={formatarValor}
+                  width={40}
                 />
 
                 <Tooltip
-                  formatter={(value: number) =>
-                    new Intl.NumberFormat("pt-BR", {
-                      minimumFractionDigits: 2,
-                    }).format(value)
-                  }
+                  formatter={(value: number) => [formatarValor(value), unidade]}
+                  labelFormatter={(v) => `Ano: ${v}`}
                 />
 
                 <Legend />
 
                 <Line
-                  type="monotone"
-                  dataKey="fixado"
-                  stroke="#3b82f6"
-                  strokeWidth={2}
-                  dot
+                  type={isBinario ? "stepAfter" : "monotone"}
+                  dataKey="valor"
+                  name={unidade || "Valor"}
+                  stroke="#8884d8"
+                  strokeWidth={3}
+                  dot={{ r: 5 }}
                 />
 
-                <Line
-                  type="monotone"
-                  dataKey="empenhado"
-                  stroke="#22c55e"
-                  strokeWidth={2}
-                  dot
-                />
+                {isBinario && (
+                  <ReferenceLine y={1} stroke="green" strokeDasharray="3 3" label="Meta" />
+                )}
               </LineChart>
             </ResponsiveContainer>
           </div>
 
-
         </div>
 
         <div className="analysis-box">
-          <h2>Análise</h2>
-          <p>{analise}</p>
+          <h2>Diagnóstico</h2>
+          <p>{gerarAnalise()}</p>
         </div>
 
-      </section>
+        <h1 id="title-metrics">Métricas Qualitativas</h1>
 
+        <div className="selection-container">
+          <select
+            value={indicadorQuantId}
+            onChange={(e) => setIndicadorQuantId(e.target.value)}
+          >
+            {DADOS_QUANTITATIVOS_ODS.map((ods) => (
+              <option key={ods.id} value={ods.id}>
+                {ods.id} - {ods.titulo}
+              </option>
+            ))}
+          </select>
+        </div>
+
+
+        <div className="metrics-container">
+          <div className="chart-container">
+            <h2>Panorama Comparativo</h2>
+            <p>{indicadorQuantAtual.descricao}</p>
+            <ResponsiveContainer height={300}>
+              <BarChart
+                data={dadosComparativosQuant}
+                margin={{ top: 20, right: 30, left: 100, bottom: 40 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+
+                <XAxis
+                  type="category"
+                  dataKey="municipio"
+                />
+
+                <YAxis
+                  type="number"
+                  domain={[0, 2]}
+                  ticks={[0, 1, 2]}
+                  tickFormatter={formatarNivelImplementacao}
+                />
+
+                <Tooltip
+                  formatter={(value: number) => [
+                    formatarNivelImplementacao(value),
+                    "Nível de Implementação",
+                  ]}
+                />
+
+                <Bar
+                  dataKey="valor"
+                  fill="#3b82f6"
+                  barSize={40}
+                  name="Valor"
+                />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        <div className="analysis-box">
+          <h2>Diagnóstico Quantitativo</h2>
+          <p>{gerarAnaliseQuant()}</p>
+        </div>
+      </section>
       <Footer />
     </div>
   );

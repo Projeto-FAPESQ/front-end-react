@@ -17,11 +17,11 @@ export default function Footer() {
           <ul>
             <li>
               <Phone size={18} className="icon" />
-              +99 99 9999-9999
+              +55 83 9967-4454
             </li>
             <li>
               <Mail size={18} className="icon" />
-              ExemploLegal@Mail.Com
+              alecvan.franca@ifpb.edu.br
             </li>
             <li>
               <MapPin size={18} className="icon" />

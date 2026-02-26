@@ -8,25 +8,46 @@ import Footer from "../../components/footer/Footer";
 import Button from "../../components/input/button/Button";
 import Card from "../../components/card/Card";
 import { useNavigate } from 'react-router-dom';
-
+import { useEffect, useState } from 'react';
+import { backgrounds, type BackgroundType } from './backgrounds';
 
 export default function Home() {
   const navigate = useNavigate();
+  const [fade, setFade] = useState(false);
+  const [actualBackground, setActualBackground] = useState<BackgroundType>(backgrounds[0]);
 
   function navegar(page: string) {
     navigate(`${page}`);
   }
 
+  useEffect(() => {
+  const interval = setInterval(() => {
+    setFade(true);
+
+    setTimeout(() => {
+      setActualBackground((prev) => {
+        const next = backgrounds.find(e => e.id === prev.id + 1);
+        return next ?? backgrounds[0];
+      });
+
+      setFade(false);
+    }, 1000); 
+  }, 8000); 
+
+  return () => clearInterval(interval);
+}, []);
 
   return (
     <div>
       <Header />
 
       <section id="first-hero" className="hero">
-        <div className="overlay"></div>
+        <img className={fade ? "fade-out" : ""} key={actualBackground.id} src={actualBackground.url} alt="background" />
+
+        <div className={`overlay ${fade ? "fade-out-overlay" : ""}`}></div>
 
         <div className="hero-content">
-          <h1>Cidades e Comunidades Sustentáveis</h1>
+          <h1>Observatório Cidades Sustentáveis</h1>
           <p>
             Uma ferramenta para o acompanhamento do objetivo de desenvolvimento
             sustentável 11
@@ -38,7 +59,7 @@ export default function Home() {
           </div>
         </div>
 
-        <span className="city-label">Cajazeiras</span>
+        <span className="city-label">{actualBackground.name}</span>
       </section>
 
 
