@@ -15,7 +15,7 @@ export default function Contact() {
 
         <form
           className="form-container"
-          action="https://formsubmit.co/precisodoemail.com"
+          action="https://formsubmit.co/alecvan.franca@ifpb.edu.br"
           method="POST"
         >
           <input type="hidden" name="_captcha" value="false" />
