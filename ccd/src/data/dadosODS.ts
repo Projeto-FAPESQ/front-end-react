@@ -13,6 +13,202 @@ export interface IndicadorODS {
 
 export const DADOS_ODS = [
   {
+    id: "11.1.1",
+    titulo: "Coleta de Esgoto",
+    descricao: "Percentual de domicílios com coleta de esgoto adequada.",
+    tipo: "percentual",
+    eixoLabel: "%",
+    historico: [
+      {
+        municipio: "Patos",
+        dados: [
+          { ano: 2016, valor: 9.00 }, { ano: 2017, valor: 15.00 }, { ano: 2018, valor: 15.30 },
+          { ano: 2019, valor: 15.40 }, { ano: 2020, valor: 13.70 }, { ano: 2021, valor: 13.40 },
+          { ano: 2022, valor: 13.40 }, { ano: 2023, valor: 11.50 }
+        ]
+      },
+      {
+        municipio: "Cajazeiras",
+        dados: [
+          { ano: 2016, valor: 15.40 }, { ano: 2017, valor: 17.90 }, { ano: 2018, valor: 18.10 },
+          { ano: 2019, valor: 18.30 }, { ano: 2020, valor: 18.70 }, { ano: 2021, valor: 18.10 },
+          { ano: 2022, valor: 18.00 }, { ano: 2023, valor: 14.80 }
+        ]
+      },
+      {
+        municipio: "Pombal",
+        dados: [
+          { ano: 2016, valor: 53.50 }, { ano: 2017, valor: 53.40 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 80.20 }, { ano: 2021, valor: 80.20 },
+          { ano: 2022, valor: 0 }, { ano: 2023, valor: 0 }
+        ]
+      },
+      {
+        municipio: "Monte Horebe",
+        dados: [
+          { ano: 2016, valor: 55.50 }, { ano: 2017, valor: 55.10 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 61.60 },
+          { ano: 2022, valor: 0 }, { ano: 2023, valor: 0 }
+        ]
+      },
+      {
+        municipio: "Sousa",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 0 }, { ano: 2023, valor: 0 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "11.1.2",
+    titulo: "Abastecimento de Água",
+    descricao: "Percentual de domicílios com abastecimento de água adequado.",
+    tipo: "percentual",
+    eixoLabel: "%",
+    historico: [
+      {
+        municipio: "Patos",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 95.30 }, { ano: 2023, valor: 96.60 }
+        ]
+      },
+      {
+        municipio: "Cajazeiras",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 82.50 }, { ano: 2023, valor: 81.30 }
+        ]
+      },
+      {
+        municipio: "Pombal",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 84.80 }, { ano: 2023, valor: 80.20 }
+        ]
+      },
+      {
+        municipio: "Monte Horebe",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 62.80 }, { ano: 2023, valor: 55.50 }
+        ]
+      },
+      {
+        municipio: "Sousa",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 86.80 }, { ano: 2023, valor: 0 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "11.1.3",
+    titulo: "Coleta de Resíduos Sólidos",
+    descricao: "Percentual de domicílios com coleta de resíduos sólidos adequada.",
+    tipo: "percentual",
+    eixoLabel: "%",
+    historico: [
+      {
+        municipio: "Patos",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 95.69 }, { ano: 2023, valor: 0 }
+        ]
+      },
+      {
+        municipio: "Cajazeiras",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 81.12 }, { ano: 2023, valor: 0 }
+        ]
+      },
+      {
+        municipio: "Pombal",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 80.27 }, { ano: 2023, valor: 0 }
+        ]
+      },
+      {
+        municipio: "Monte Horebe",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 55.49 }, { ano: 2023, valor: 0 }
+        ]
+      },
+      {
+        municipio: "Sousa",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 0 }, { ano: 2018, valor: 0 },
+          { ano: 2019, valor: 0 }, { ano: 2020, valor: 0 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 86.75 }, { ano: 2023, valor: 0 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "11.1.4",
+    titulo: "Investimento Per Capita em Habitação e Urbanismo",
+    descricao: "Investimento per capita anual em habitação e urbanismo (R$/habitante).",
+    tipo: "numerico",
+    eixoLabel: "R$/hab",
+    historico: [
+      {
+        municipio: "Patos",
+        dados: [
+          { ano: 2016, valor: 242.81 }, { ano: 2017, valor: 266.29 }, { ano: 2018, valor: 242.04 },
+          { ano: 2019, valor: 171.93 }, { ano: 2020, valor: 181.53 }, { ano: 2021, valor: 202.40 },
+          { ano: 2022, valor: 249.48 }, { ano: 2023, valor: 283.97 }
+        ]
+      },
+      {
+        municipio: "Cajazeiras",
+        dados: [
+          { ano: 2016, valor: 159.91 }, { ano: 2017, valor: 154.08 }, { ano: 2018, valor: 178.08 },
+          { ano: 2019, valor: 182.25 }, { ano: 2020, valor: 190.80 }, { ano: 2021, valor: 0 },
+          { ano: 2022, valor: 0 }, { ano: 2023, valor: 215.47 }
+        ]
+      },
+      {
+        municipio: "Pombal",
+        dados: [
+          { ano: 2016, valor: 194.29 }, { ano: 2017, valor: 147.62 }, { ano: 2018, valor: 189.16 },
+          { ano: 2019, valor: 158.53 }, { ano: 2020, valor: 226.02 }, { ano: 2021, valor: 278.79 },
+          { ano: 2022, valor: 279.37 }, { ano: 2023, valor: 366.69 }
+        ]
+      },
+      {
+        municipio: "Monte Horebe",
+        dados: [
+          { ano: 2016, valor: 13.56 }, { ano: 2017, valor: 66.21 }, { ano: 2018, valor: 17.69 },
+          { ano: 2019, valor: 46.09 }, { ano: 2020, valor: 156.88 }, { ano: 2021, valor: 81.56 },
+          { ano: 2022, valor: 223.84 }, { ano: 2023, valor: 180.99 }
+        ]
+      },
+      {
+        municipio: "Sousa",
+        dados: [
+          { ano: 2016, valor: 0 }, { ano: 2017, valor: 170.16 }, { ano: 2018, valor: 262.46 },
+          { ano: 2019, valor: 231.14 }, { ano: 2020, valor: 313.72 }, { ano: 2021, valor: 301.02 },
+          { ano: 2022, valor: 384.98 }, { ano: 2023, valor: 430.15 }
+        ]
+      }
+    ]
+  },
+  {
     id: "11.2",
     titulo: "Transporte Público e Acessibilidade",
     descricao: "Proporcionar o acesso a sistemas de transporte seguros, acessíveis e sustentáveis.",
