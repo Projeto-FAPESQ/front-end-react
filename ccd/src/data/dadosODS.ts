@@ -238,6 +238,7 @@ export const DADOS_ODS = [
           { ano: 2022, valor: 0 }, { ano: 2023, valor: 0 }
         ]
       },
+      
       {
         municipio: "Monte Horebe",
         dados: [
@@ -256,6 +257,56 @@ export const DADOS_ODS = [
       }
     ]
   },
+  {
+    id: "11.3",
+    titulo: "Frequência de audiências públicas para discussão das leis orçamentárias",
+    descricao: "Aumentar a urbanização inclusiva e sustentável, e a capacidade para o planejamento e a gestão participativa, integrada e sustentável dos assentamentos humanos, em todos os países. ",
+    tipo: "numerico",
+    historico: [
+        {
+        municipio: "Patos",
+        dados: [
+          { ano: 2016, valor: 3 }, { ano: 2017, valor: 4 }, { ano: 2018, valor: 3 },
+          { ano: 2019, valor: 3 }, { ano: 2020, valor: 2 }, { ano: 2021, valor: 4 },
+          { ano: 2022, valor: 4 }, { ano: 2023, valor: 4 }
+        ]
+      },
+      {
+        municipio: "Cajazeiras",
+        dados: [
+          { ano: 2016, valor: 3 }, { ano: 2017, valor: 4 }, { ano: 2018, valor: 3 },
+          { ano: 2019, valor: 3 }, { ano: 2020, valor: 3 }, { ano: 2021, valor: 4 },
+          { ano: 2022, valor: 3 }, { ano: 2023, valor: 3 }
+        ]
+      },
+      {
+        municipio: "Pombal",
+        dados: [
+          { ano: 2016, valor: 2 }, { ano: 2017, valor: 3 }, { ano: 2018, valor: 2 },
+          { ano: 2019, valor: 2 }, { ano: 2020, valor: 2 }, { ano: 2021, valor: 3 },
+          { ano: 2022, valor: 2 }, { ano: 2023, valor: 2 }
+        ]
+      },
+      
+      {
+        municipio: "Monte Horebe",
+        dados: [
+          { ano: 2016, valor: 3 }, { ano: 2017, valor: 5 }, { ano: 2018, valor: 4 },
+          { ano: 2019, valor: 4 }, { ano: 2020, valor: 2 }, { ano: 2021, valor: 5 },
+          { ano: 2022, valor: 4 }, { ano: 2023, valor: 4 }
+        ]
+      },
+      {
+        municipio: "Sousa",
+        dados: [
+          { ano: 2016, valor: 3 }, { ano: 2017, valor: 4 }, { ano: 2018, valor: 3 },
+          { ano: 2019, valor: 3 }, { ano: 2020, valor: 2 }, { ano: 2021, valor: 4 },
+          { ano: 2022, valor: 3 }, { ano: 2023, valor: 3 }
+        ]
+      }
+    ]
+  },
+  
   {
     id: "11.4",
     titulo: "Patrimônio Cultural e Natural ",

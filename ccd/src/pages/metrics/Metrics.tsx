@@ -13,7 +13,7 @@ export default function Metrics() {
   const [municipio, setMunicipio] = useState("Patos");
   const [indicadorId, setIndicadorId] = useState(DADOS_ODS[0].id);
   const [indicadorQuantId, setIndicadorQuantId] = useState(DADOS_QUANTITATIVOS_ODS[0].id);
-
+  
   const indicadorAtual = DADOS_ODS.find((d) => d.id === indicadorId) || DADOS_ODS[0];
   const indicadorQuantAtual = DADOS_QUANTITATIVOS_ODS.find((d) => d.id === indicadorQuantId) || DADOS_QUANTITATIVOS_ODS[0];
 
@@ -157,7 +157,7 @@ export default function Metrics() {
                     strokeDasharray="5 5"
                     label={{ 
                       position: 'insideTopRight', 
-                      value: `Média: ${Number.isInteger(mediaAnoAtual) ? mediaAnoAtual : mediaAnoAtual.toFixed(2)}`,
+                      //value: `Média: ${Number.isInteger(mediaAnoAtual) ? mediaAnoAtual : mediaAnoAtual.toFixed(2)}`,
                       fill: '#ef4444',
                       fontSize: 13,
                       fontWeight: 'bold'
@@ -166,8 +166,10 @@ export default function Metrics() {
                 )}
 
                 <Bar dataKey="valor" fill="#3b82f6" barSize={30} name={unidade || "Valor"} />
+                <Bar dataKey="Média geral" fill="#ef4444"></Bar>
               </BarChart>
             </ResponsiveContainer>
+                <h3 className="result">Média dos municípios: {Number.isInteger(mediaAnoAtual) ? mediaAnoAtual : mediaAnoAtual.toFixed(2)}</h3>
           </div>
 
           <div className="chart-container">
