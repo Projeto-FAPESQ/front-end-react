@@ -6,12 +6,18 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
-.team-card img {
+.img-container {
+  height: 350px;
+  display: flex;
+  justify-content: center;
+}
+
+.img-container img {
   width: 100%;
   height: auto;
   max-width: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .team-card:hover {

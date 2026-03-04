@@ -13,24 +13,28 @@ export default function Metrics() {
   const [municipio, setMunicipio] = useState("Patos");
   const [indicadorId, setIndicadorId] = useState(DADOS_ODS[0].id);
   const [indicadorQuantId, setIndicadorQuantId] = useState(DADOS_QUANTITATIVOS_ODS[0].id);
-
+  
   const indicadorAtual = DADOS_ODS.find((d) => d.id === indicadorId) || DADOS_ODS[0];
   const indicadorQuantAtual = DADOS_QUANTITATIVOS_ODS.find((d) => d.id === indicadorQuantId) || DADOS_QUANTITATIVOS_ODS[0];
 
   const isBinario = indicadorAtual.tipo === "binario";
   const isQuantBinario = indicadorQuantAtual.tipo === "binario";
 
-
   const unidade = indicadorAtual.eixoLabel || "";
 
   const listaMunicipios = indicadorAtual.historico.map((h) => h.municipio);
-
   const listaAnos = indicadorAtual.historico[0].dados.map((d) => d.ano);
 
   const formatarValor = (valor: number) => {
     if (isBinario) return valor === 1 ? "Sim" : "Não";
-    return `${valor}`;
+    return Number.isInteger(valor) ? `${valor}` : `${valor.toFixed(2)}`;
   };
+
+  const mediaAnoAtual = indicadorAtual.historico.reduce((acc, mun) => {
+    const dadoDoAno = mun.dados.find((d) => d.ano === ano);
+    return acc + (dadoDoAno ? dadoDoAno.valor : 0);
+  }, 0) / (indicadorAtual.historico.length || 1);
+
 
   const dadosComparativosAno = indicadorAtual.historico.map((item) => {
     const dadoDoAno = item.dados.find((d) => d.ano === ano);
@@ -39,12 +43,29 @@ export default function Metrics() {
       valor: dadoDoAno ? dadoDoAno.valor : 0,
     };
   });
+  const dadosHistoricosComMedia = listaAnos.map((anoLoop) => {
+    const valorMunicipio = indicadorAtual.historico
+      .find((h) => h.municipio === municipio)
+      ?.dados.find((d) => d.ano === anoLoop)?.valor || 0;
 
-  const dadosHistoricosMunicipio = indicadorAtual.historico.find(
-    (h) => h.municipio === municipio
-  )?.dados || [];
+    let soma = 0;
+    let qtd = 0;
+    indicadorAtual.historico.forEach((mun) => {
+      const d = mun.dados.find((dado) => dado.ano === anoLoop);
+      if (d) {
+        soma += d.valor;
+        qtd++;
+      }
+    });
 
-  const valorAtual = dadosHistoricosMunicipio.find((d) => d.ano === ano)?.valor || 0;
+    return {
+      ano: anoLoop,
+      valor: valorMunicipio,
+      mediaRegional: qtd > 0 ? soma / qtd : 0,
+    };
+  });
+
+  const valorAtual = dadosHistoricosComMedia.find((d) => d.ano === ano)?.valor || 0;
 
   function gerarAnalise() {
     if (isBinario) {
@@ -52,7 +73,10 @@ export default function Metrics() {
         ? `Em ${ano}, ${municipio} cumpre a meta estabelecida.`
         : `Em ${ano}, ${municipio} ainda não atendia aos requisitos da meta.`;
     } else {
-      return `Em ${ano}, ${municipio} registrou ${valorAtual} ${unidade.toLowerCase() || 'ocorrências'} referentes a este indicador.`;
+      const mediaFormatada = Number.isInteger(mediaAnoAtual) ? mediaAnoAtual : mediaAnoAtual.toFixed(2);
+      const comparativo = valorAtual >= mediaAnoAtual ? "acima" : "abaixo";
+      
+      return `Em ${ano}, ${municipio} registrou ${valorAtual} ${unidade.toLowerCase() || 'ocorrências'} referentes a este indicador. Este resultado está ${comparativo} da média regional do mesmo ano (${mediaFormatada}).`;
     }
   }
 
@@ -63,14 +87,10 @@ export default function Metrics() {
 
   const formatarNivelImplementacao = (valor: number): string => {
     switch (valor) {
-      case 0:
-        return "Não existente";
-      case 1:
-        return "Existente";
-      case 2:
-        return "Implementado";
-      default:
-        return String(valor);
+      case 0: return "Não existente";
+      case 1: return "Existente";
+      case 2: return "Implementado";
+      default: return String(valor);
     }
   };
 
@@ -116,7 +136,7 @@ export default function Metrics() {
           <div className="chart-container">
             <h2>Panorama ({ano})</h2>
             <ResponsiveContainer height={300}>
-              <BarChart data={dadosComparativosAno} layout="vertical" margin={{ left: 40, right: 30 }}>
+              <BarChart data={dadosComparativosAno} layout="vertical" margin={{ top: 20, left: 40, right: 30 }}>
                 <CartesianGrid strokeDasharray="3 3" horizontal={false} />
 
                 <XAxis
@@ -128,16 +148,34 @@ export default function Metrics() {
                 <YAxis type="category" dataKey="municipio" width={100} />
 
                 <Tooltip formatter={(value: number) => [formatarValor(value), unidade]} />
+                <Legend />
+
+                {!isBinario && (
+                  <ReferenceLine 
+                    x={mediaAnoAtual} 
+                    stroke="#ef4444" 
+                    strokeDasharray="5 5"
+                    label={{ 
+                      position: 'insideTopRight', 
+                      //value: `Média: ${Number.isInteger(mediaAnoAtual) ? mediaAnoAtual : mediaAnoAtual.toFixed(2)}`,
+                      fill: '#ef4444',
+                      fontSize: 13,
+                      fontWeight: 'bold'
+                    }} 
+                  />
+                )}
 
                 <Bar dataKey="valor" fill="#3b82f6" barSize={30} name={unidade || "Valor"} />
+                <Bar dataKey="Média geral" fill="#ef4444"></Bar>
               </BarChart>
             </ResponsiveContainer>
+                <h3 className="result">Média dos municípios: {Number.isInteger(mediaAnoAtual) ? mediaAnoAtual : mediaAnoAtual.toFixed(2)}</h3>
           </div>
 
           <div className="chart-container">
             <h2 >Evolução: {municipio}</h2>
             <ResponsiveContainer height={300}>
-              <LineChart data={dadosHistoricosMunicipio} margin={{ left: 20, right: 30 }}>
+              <LineChart data={dadosHistoricosComMedia} margin={{ left: 20, right: 30 }}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="ano" />
 
@@ -149,7 +187,7 @@ export default function Metrics() {
                 />
 
                 <Tooltip
-                  formatter={(value: number) => [formatarValor(value), unidade]}
+                  formatter={(value: number) => [formatarValor(value), unidade || "Valor"]}
                   labelFormatter={(v) => `Ano: ${v}`}
                 />
 
@@ -158,14 +196,26 @@ export default function Metrics() {
                 <Line
                   type={isBinario ? "stepAfter" : "monotone"}
                   dataKey="valor"
-                  name={unidade || "Valor"}
-                  stroke="#8884d8"
+                  name={unidade || "Valor do Município"}
+                  stroke="#3b82f6"
                   strokeWidth={3}
                   dot={{ r: 5 }}
                 />
 
+                {!isBinario && (
+                  <Line
+                    type="monotone"
+                    dataKey="mediaRegional"
+                    name={`Média dos municípios`}
+                    stroke="#ef4444"
+                    strokeWidth={2}
+                    strokeDasharray="4 4" 
+                    dot={false}
+                  />
+                )}
+
                 {isBinario && (
-                  <ReferenceLine y={1} stroke="green" strokeDasharray="3 3" label="Meta" />
+                  <ReferenceLine y={1} stroke="#22c55e" strokeDasharray="3 3" label="Meta" />
                 )}
               </LineChart>
             </ResponsiveContainer>
