@@ -35,25 +35,25 @@ export default function About() {
       nome: "Gustavo Lopes Lemos",
       imagem: lopes,
       descricao: "Bolsista e Desenvolvedor do back-end",
-      contato: "loopisjr@gmail.com",
+      contato: "gugalopes.dev@gmail.com",
     },
     {
       nome: "Gustavo P. Marcena da Cruz",
       imagem: gustavo,
       descricao: "Bolsista e Desenvolvedor do front-end",
-      contato: "eva@ifpb.edu.br",
+      contato: "gustavopmarcena@outlook.com",
     },
     {
       nome: "Islan Pereira de Oliveira",
       imagem: islan,
       descricao: "Bolsista e Desenvolvedor do back-end",
-      contato: "alecvan.franca@ifpb.edu.br",
+      contato: "islanpereiradeoliveira@gmail.com",
     },
     {
       nome: "Kahe Mikayas Estrela Maciel",
       imagem: kahe,
       descricao: "Bolsista e Desenvolvedor do back-end",
-      contato: "eva@ifpb.edu.br",
+      contato: "kahe.mikayas@gmail.com",
     },
   ];
 

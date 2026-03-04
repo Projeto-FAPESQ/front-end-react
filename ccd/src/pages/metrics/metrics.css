@@ -52,6 +52,9 @@ select {
   width: 100%;
 }
 
+.result {
+  text-align: center;
+}
 
 @media (max-width: 768px) {
    .metrics-container {

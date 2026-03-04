@@ -31,7 +31,7 @@ export default function Home() {
       });
 
       setFade(false);
-    }, 1000); 
+    }, 2000); 
   }, 8000); 
 
   return () => clearInterval(interval);
