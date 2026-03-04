@@ -136,38 +136,35 @@ export default function Metrics() {
           <div className="chart-container">
             <h2>Panorama ({ano})</h2>
             <ResponsiveContainer height={300}>
-              <BarChart data={dadosComparativosAno} layout="vertical" margin={{ top: 20, left: 40, right: 30 }}>
-                <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+            <BarChart data={dadosComparativosAno} layout="vertical" margin={{ top: 20, left: 40, right: 30 }}>
+              <CartesianGrid strokeDasharray="3 3" horizontal={false} />
 
-                <XAxis
-                  type="number"
-                  domain={isBinario ? [0, 1] : [0, 'auto']}
-                  hide={isBinario}
+              <XAxis
+                type="number"
+                domain={isBinario ? [0, 1] : [0, 'auto']}
+                hide={isBinario}
+              />
+
+              <YAxis type="category" dataKey="municipio" width={100} />
+
+              <Tooltip formatter={(value: number) => [formatarValor(value), unidade]} />
+              <Legend />
+              <Bar dataKey="valor" fill="#3b82f6" barSize={30} name={unidade || "Valor"} />
+              {!isBinario && (
+                <ReferenceLine 
+                  x={mediaAnoAtual} 
+                  stroke="#ef4444" 
+                  strokeDasharray="5 5"
+                  label={{ 
+                    position: 'insideTopRight', 
+                    value: `Média: ${Number.isInteger(mediaAnoAtual) ? mediaAnoAtual : mediaAnoAtual.toFixed(2)}`, // <-- Descomentei!
+                    fill: '#ef4444',
+                    fontSize: 13,
+                    fontWeight: 'bold'
+                  }} 
                 />
-
-                <YAxis type="category" dataKey="municipio" width={100} />
-
-                <Tooltip formatter={(value: number) => [formatarValor(value), unidade]} />
-                <Legend />
-
-                {!isBinario && (
-                  <ReferenceLine 
-                    x={mediaAnoAtual} 
-                    stroke="#ef4444" 
-                    strokeDasharray="5 5"
-                    label={{ 
-                      position: 'insideTopRight', 
-                      //value: `Média: ${Number.isInteger(mediaAnoAtual) ? mediaAnoAtual : mediaAnoAtual.toFixed(2)}`,
-                      fill: '#ef4444',
-                      fontSize: 13,
-                      fontWeight: 'bold'
-                    }} 
-                  />
-                )}
-
-                <Bar dataKey="valor" fill="#3b82f6" barSize={30} name={unidade || "Valor"} />
-                <Bar dataKey="Média geral" fill="#ef4444"></Bar>
-              </BarChart>
+              )}
+            </BarChart>
             </ResponsiveContainer>
                 <h3 className="result">Média dos municípios: {Number.isInteger(mediaAnoAtual) ? mediaAnoAtual : mediaAnoAtual.toFixed(2)}</h3>
           </div>

@@ -258,6 +258,56 @@ export const DADOS_ODS = [
     ]
   },
   {
+    id: "11.2.2",
+    titulo: "Despesa Liquida com transporte e vias públicas",
+    descricao: "Proporcionar o acesso a sistemas de transporte seguros, acessíveis e sustentáveis.",
+    tipo: "numerico",
+    eixoLabel: "R$/hab.",
+    historico: [
+        {
+        municipio: "Patos",
+        dados: [
+          { ano: 2016, valor: 45.20 }, { ano: 2017, valor: 40.80 }, { ano: 2018, valor: 52.10 },
+          { ano: 2019, valor: 60.50 }, { ano: 2020, valor: 35.00 }, { ano: 2021, valor: 72.30 },
+          { ano: 2022, valor: 135.40 }, { ano: 2023, valor: 158.90 }
+        ]
+      },
+      {
+        municipio: "Cajazeiras",
+        dados: [
+          { ano: 2016, valor: 42.10 }, { ano: 2017, valor: 35.00 }, { ano: 2018, valor: 48.50 },
+          { ano: 2019, valor: 52.30 }, { ano: 2020, valor: 30.10 }, { ano: 2021, valor: 65.40 },
+          { ano: 2022, valor: 115.20 }, { ano: 2023, valor: 132.80 }
+        ]
+      },
+      {
+        municipio: "Pombal",
+        dados: [
+          { ano: 2016, valor: 55.00 }, { ano: 2017, valor: 48.20 }, { ano: 2018, valor: 62.30 },
+          { ano: 2019, valor: 75.10 }, { ano: 2020, valor: 40.50}, { ano: 2021, valor: 88.40 },
+          { ano: 2022, valor: 145.20 }, { ano: 2023, valor: 168.50 }
+        ]
+      },
+      
+      {
+        municipio: "Monte Horebe",
+        dados: [
+          { ano: 2016, valor: 115.40 }, { ano: 2017, valor: 98.50 }, { ano: 2018, valor: 130.20 },
+          { ano: 2019, valor: 145.00 }, { ano: 2020, valor: 85.30 }, { ano: 2021, valor: 160.80 },
+          { ano: 2022, valor: 310.50 }, { ano: 2023, valor: 385.20 }
+        ]
+      },
+      {
+        municipio: "Sousa",
+        dados: [
+          { ano: 2016, valor: 38.50 }, { ano: 2017, valor: 32.10 }, { ano: 2018, valor: 45.00 },
+          { ano: 2019, valor: 50.40 }, { ano: 2020, valor: 28.00 }, { ano: 2021, valor: 58.20 },
+          { ano: 2022, valor: 102.50 }, { ano: 2023, valor: 125.40 }
+        ]
+      }
+    ]
+  },
+  {
     id: "11.3",
     titulo: "Frequência de audiências públicas para discussão das leis orçamentárias",
     descricao: "Aumentar a urbanização inclusiva e sustentável, e a capacidade para o planejamento e a gestão participativa, integrada e sustentável dos assentamentos humanos, em todos os países. ",
