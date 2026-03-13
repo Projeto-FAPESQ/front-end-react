@@ -1,0 +1,44 @@
+
+.metodologic {
+  padding: 60px 12%;
+
+  background-color: white;
+  margin: 0;
+}
+.metodologic h1{
+  color: var(--cor-title);;
+}
+
+.metodologic h2 {
+  font-size: 28px;
+  color: var(--cor-title);
+  margin-bottom: 25px;
+}
+
+.metodologic p {
+  line-height: 1.7;
+  color: black;
+  margin-bottom: 18px;
+}
+
+.igs {
+  padding: 60px 10%;
+  background: #fafafa;
+}
+
+.igs h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.municipios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 25px;
+}
+
+.actions {
+  display: flex;
+  justify-content: end;
+  padding: 10px 0px ;
+}
