@@ -21,21 +21,21 @@ export default function Home() {
   }
 
   useEffect(() => {
-  const interval = setInterval(() => {
-    setFade(true);
+    const interval = setInterval(() => {
+      setFade(true);
 
-    setTimeout(() => {
-      setActualBackground((prev) => {
-        const next = backgrounds.find(e => e.id === prev.id + 1);
-        return next ?? backgrounds[0];
-      });
+      setTimeout(() => {
+        setActualBackground((prev) => {
+          const next = backgrounds.find(e => e.id === prev.id + 1);
+          return next ?? backgrounds[0];
+        });
 
-      setFade(false);
-    }, 2000); 
-  }, 8000); 
+        setFade(false);
+      }, 2000);
+    }, 8000);
 
-  return () => clearInterval(interval);
-}, []);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div>
@@ -139,18 +139,16 @@ export default function Home() {
 
       </section>
 
-      <section id="sponsors" className="hero">
-
+      <section id="sponsors" className="hero sponsors">
         <div className="hero-sponsors-content">
           <h1>Realizadores</h1>
 
           <div className="hero-imgs-group">
-            <img src={imagemLoopis} alt="" />
-            <img src={imgFapesq} alt="" />
-            <img src={imgIfpb} alt="" />
+            <img src={imagemLoopis} alt="Loopis" />
+            <img src={imgFapesq} alt="Fapesq" />
+            <img src={imgIfpb} alt="IFPB" />
           </div>
         </div>
-
       </section>
 
       <Footer />

@@ -2,6 +2,7 @@
 
 
 :root {
+  color-scheme: light;
 
   --font-hero: 3rem;
   --font-title: 2.2rem;
@@ -50,6 +51,10 @@ body {
 
   min-width: 320px;
   min-height: 100vh;
+}
+
+html {
+  color-scheme: light;
 }
 
 
