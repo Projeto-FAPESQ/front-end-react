@@ -19,10 +19,21 @@
 }
 
 .footer-section h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: var(--font-section);
+  font-weight: var(--font-semibold);
   margin-bottom: 1rem;
 }
+
+.footer-section p,
+.footer-section li {
+  font-size: var(--font-small);
+  line-height: var(--line-normal);
+}
+
+.footer-bottom {
+  font-size: var(--font-xs);
+}
+
 
 .footer-section ul {
   list-style: none;
@@ -34,7 +45,6 @@
   display: flex;
   align-items: flex-start;
   margin-bottom: 0.8rem;
-  line-height: 1.4;
 }
 
 .footer-section .icon {

@@ -51,14 +51,14 @@
 
 .hero h1 {
   font-family: var(--font-titulo);
-  font-size: var(--title);
+  font-size: var(--font-hero);
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
 .hero p {
   font-family: var(--font-normal);
-  font-size: 1.2rem;
+  font-size: var(--font-subtitle);
   font-weight: 400;
   margin-bottom: 2rem;
   color: #e0e0e0;
@@ -97,12 +97,12 @@
 .hero-about-section h2 {
   color: var(--cor-principal);
   font-weight: 500;
-  font-size: 1.4rem;
+  font-size: var(--font-text);
   margin-bottom: 10px;
 }
 
 .hero-about-section h1 {
-  font-size: var(--subtitle);
+  font-size: var(--font-subtitle);
   font-weight: 700;
   color: var(--cor-title);
   margin-bottom: 20px;
@@ -144,8 +144,7 @@
 }
 
 #sponsors h1 {
-  font-size: var(--subtitle);
-  ;
+  font-size: var(--font-title);
   color: var(--cor-title);
 }
 

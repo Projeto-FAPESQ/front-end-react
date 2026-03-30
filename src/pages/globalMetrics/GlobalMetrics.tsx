@@ -5,13 +5,27 @@ import { useNavigate } from 'react-router-dom';
 import Card from '../../components/card/Card';
 import Button from '../../components/input/button/Button';
 
-
 export default function GlobalMetrics() {
   const navigate = useNavigate();
 
   function navegar(page: string) {
-    navigate(`${page}`);
+    navigate(page);
   }
+
+  const dados = [
+    { cidade: "Cajazeiras", valor: 38.31 },
+    { cidade: "Patos", valor: 54.5 },
+    { cidade: "Sousa", valor: 34.1 },
+    { cidade: "Pombal", valor: 42.68 },
+    { cidade: "Monte Horebe", valor: 33.53 },
+  ];
+
+  const melhor = dados.reduce((prev, curr) =>
+    curr.valor > prev.valor ? curr : prev
+  );
+
+  const media =
+    dados.reduce((acc, curr) => acc + curr.valor, 0) / dados.length;
 
   return (
     <div className="global-metrics">
@@ -78,17 +92,36 @@ export default function GlobalMetrics() {
           para cada cidade participante do estudo, conforme apresentado abaixo:
         </p>
 
-
-        <div className="municipios-grid">
-          <Card title="Cajazeiras" text="38,31%" />
-          <Card title="Patos" text="54,5%" />
-          <Card title="Sousa" text="34,1%" />
-          <Card title="Pombal" text="42,68%" />
-          <Card title="Monte Horebe" text="33,53%" />
+        <div className="summary">
+          <div>
+            <span>Média geral: </span>
+            <strong>{media.toFixed(2)}%</strong>
+          </div>
+          <div>
+            <span>Município com as melhores notas: </span>
+            <strong>{melhor.cidade}</strong>
+          </div>
         </div>
 
-        <div className='actions'>
-          <Button onClick={() => navegar("/metrics")} transparent={false} label="Visualizar Métricas" />
+       
+
+        <div className="municipios-grid">
+          {dados.map((item) => (
+            <Card
+              key={item.cidade}
+              title={item.cidade}
+              text={`${item.valor}%`}
+              highlight={item.cidade === melhor.cidade}
+            />
+          ))}
+        </div>
+
+        <div className="actions">
+          <Button
+            onClick={() => navegar("/metrics")}
+            transparent={false}
+            label="Visualizar Métricas"
+          />
         </div>
       </section>
 

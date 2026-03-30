@@ -12,7 +12,17 @@
   min-height: 100vh;
 }
 
+.metodologic h2 {
+  font-size: var(--font-subtitle);
+}
+
+.metodologic p {
+  font-size: var(--font-text);
+  line-height: var(--line-relaxed);
+}
+
 #title-metrics {
+  font-size: var(--font-title);
   padding-top: 20px;
   border-bottom: 2px solid gray;
 }

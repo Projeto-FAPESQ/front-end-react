@@ -5,17 +5,20 @@
   background-color: white;
   margin: 0;
 }
+
 .metodologic h1{
-  color: var(--cor-title);;
+  color: var(--cor-title);
+  font-size: var(--font-title);
 }
 
 .metodologic h2 {
-  font-size: 28px;
+  font-size: var(--font-subtitle);
   color: var(--cor-title);
   margin-bottom: 25px;
 }
 
 .metodologic p {
+  font-size: var(--font-text);
   line-height: 1.7;
   color: black;
   margin-bottom: 18px;
@@ -41,4 +44,29 @@
   display: flex;
   justify-content: end;
   padding: 10px 0px ;
+}
+
+.summary {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.summary div {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.summary span {
+  font-size: var(--font-small);
+  color: #666;
+}
+
+.summary strong {
+  font-size: var(--font-subtitle);
+  color: var(--cor-principal);
 }
